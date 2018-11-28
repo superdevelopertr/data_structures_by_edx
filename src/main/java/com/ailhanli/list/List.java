@@ -18,4 +18,9 @@ public interface List<T> {
 	 
 	 void addBefore(Node<T> node, T key);
 	 void addAfter(Node<T> node, T key);
+	 
+	 void add(int index, T key);
+	 T find(int index);
+	 
+	 int findMax();
 }

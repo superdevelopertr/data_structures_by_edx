@@ -1,6 +1,6 @@
 package com.ailhanli.list;
 
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T> implements List<T>, Comparable<T> {
 
 	static class Node<T> {
 		private T data;
@@ -67,6 +67,9 @@ public class LinkedList<T> implements List<T> {
 
 	@Override
 	public T popFront() {
+		if (head == null) {
+			return null;
+		}
 		T result = getHeadData();
 		head = head.next;
 		if (head == null) {
@@ -174,24 +177,34 @@ public class LinkedList<T> implements List<T> {
 		Node<T> newNode = new Node<>();
 		newNode.setData(key);
 		if (head == null) {
-			head = newNode;
-			tail = head;
+			head = tail = newNode;
 			return;
+		}
+
+		if (head.data.equals(node.data)) {
+			newNode.next = head;
+			head = newNode;
+
 		}
 
 		if (head.next == null) {
-			newNode.next = head;
-			head = newNode;
 			return;
 		}
 
-		Node<T> temp = head;
-		while (!temp.next.data.equals(node.data)) {
-			temp = temp.next;
+		Node<T> findNode = head;
+		Node<T> backNode = head;
+		while (findNode.next != null) {
+
+			backNode = findNode;
+			findNode = findNode.next;
+
+			if (findNode.data.equals(node.data)) {
+				backNode.next = newNode;
+				newNode.next = findNode;
+				break;
+			}
 		}
 
-		temp.next = newNode;
-		newNode.next = node;
 	}
 
 	@Override
@@ -199,18 +212,16 @@ public class LinkedList<T> implements List<T> {
 		Node<T> newNode = new Node<>();
 		newNode.setData(key);
 
-		if(head==null){
-			head = newNode;
+		if (head == null) {
+			head = tail = newNode;
 			return;
-		}
-		
-		if(node.next==null && head==tail){
-			node.next = newNode;
-			return;
-		}else if(node==tail){
-			node.next = newNode;
-			tail = node;
-		}else{
+		} else if (head.next == null) {
+			newNode.next = head;
+			head = tail = newNode;
+		} else if (node == tail) {
+			tail.next = newNode;
+		} 
+		else {
 			newNode.next = node.next;
 			node.next = newNode;
 		}
@@ -227,4 +238,64 @@ public class LinkedList<T> implements List<T> {
 		}
 	}
 
+	public Node<T> getHead() {
+		return head;
+	}
+
+	@Override
+	public T find(int index) {
+		if(head==null ) {
+			throw new IndexOutOfBoundsException();
+		}
+		
+		if(head.next==null && index>0) {
+			throw new IndexOutOfBoundsException();
+		}
+		
+		int i = 0;
+		Node<T> temp = head;
+		while(temp.next!=null) {
+			temp= temp.next;
+			i++;
+			if(i==index) {
+				return temp.data;
+			}
+		}
+		
+		
+		throw new IndexOutOfBoundsException();
+	}
+	
+	@Override
+	public void add(int index, T key) {
+		Node<T> newNode = new Node<>();
+		newNode.setData(key);
+		
+		if((head==null || head.next==null)&& index>0) {
+			throw new IndexOutOfBoundsException();
+		}
+	
+		if(head==null || index==0) {
+			newNode.next = head;
+			head = newNode;	
+			return;
+		}
+		
+		int i = 0;
+		Node<T> temp = head;
+		while(temp.next!=null) {		
+			if(++i==index) {
+				break;
+			}
+			
+			temp= temp.next;
+		}
+		
+		if(i!=index) {
+			throw new IndexOutOfBoundsException();
+		}
+		
+		newNode.next = temp.next;
+		temp.next = newNode;		
+	}
 }
