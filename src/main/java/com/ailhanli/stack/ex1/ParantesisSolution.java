@@ -1,13 +1,12 @@
 package com.ailhanli.stack.ex1;
 
-import com.ailhanli.list.LinkedList;
 import com.ailhanli.stack.Stack;
-import com.ailhanli.stack.StackLinkedListImpl;
+import com.ailhanli.stack.StackArrayImpl;
 
 public class ParantesisSolution {
 
 	public boolean isBalanced(String word) {
-		Stack<String> stack = new StackLinkedListImpl<>(new LinkedList<>());
+		Stack<String> stack = new StackArrayImpl<>();
 
 		for (int i = 0; i < word.length(); i++) {
 			String newSymbol = "" + word.charAt(i);
