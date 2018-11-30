@@ -1,10 +1,10 @@
 package com.ailhanli.list;
 
-public class LinkedList<T> implements List<T>, Comparable<T> {
+public class LinkedList<T> implements ListE<T> {
 
 	static class Node<T> {
-		private T data;
-		private Node<T> next;
+		protected T data;
+		protected Node<T> next;
 
 		public T getData() {
 			return data;
