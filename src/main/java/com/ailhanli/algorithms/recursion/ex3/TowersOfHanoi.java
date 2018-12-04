@@ -2,6 +2,10 @@ package com.ailhanli.algorithms.recursion.ex3;
 
 
 //https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/
+/*
+ * T(n) = 2^n-1
+ * Assuming the monks move discs at the rate of one per second, it would take them more 5.8 billion centuries to solve the 64-disc problem.
+ * */
 public class TowersOfHanoi {
 
 	static void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {

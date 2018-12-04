@@ -2,32 +2,24 @@ package com.ailhanli.algorithms.recursion.ex2;
 
 public class FindGCD {
 
-	public static int findGCDIterative(int n1, int n2) {
-		int gcd = 1;
+	  public static int gcd(int p, int q) {
+	        if (q == 0) return p;
+	        else return gcd(q, p % q);
+	    }
 
-		int min = Math.min(n1, n2);
-		for (int i = 2; i < min; i++) {
-			while (n1 % i == 0 && n2 % i == 0) {
-				gcd *= i;
-				n1 = n1 / i;
-				n2 = n2 / i;
-			}
-		}
+	    // non-recursive implementation
+	    public static int gcd2(int p, int q) {
+	        while (q != 0) {
+	            int temp = q;
+	            q = p % q;
+	            p = temp;
+	        }
+	        return p;
+	    }
 
-		return gcd;
-	}
-
-	public static int findGCD(int n1, int n2) {
-
-		if(n2==0) {
-			return n1;
-		}else {
-			 return findGCD(n2, n1%n2);
-		}
-	}
 
 	public static void main(String[] args) {
-		System.out.println("gcd for : " + findGCD(12, 48));
+		System.out.println("gcd for : " + gcd2(12, 48));
 	}
 
 }
