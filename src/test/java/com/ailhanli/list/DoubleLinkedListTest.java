@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
+import com.ailhanli.basic_datastructures.list.DoubleLinkedList;
+
 public class DoubleLinkedListTest {
 
 	@Test

@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.ailhanli.list.LinkedList;
-import com.ailhanli.list.LinkedList.Node;
+import com.ailhanli.basic_datastructures.list.LinkedList;
+import com.ailhanli.basic_datastructures.list.LinkedList.Node;
 
 public class LinkedListTest {
 

@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.ailhanli.basic_datastructures.stack.ex1.ParantesisSolution;
+
 public class ParantesisSolutionTest {
 
 	@Test
