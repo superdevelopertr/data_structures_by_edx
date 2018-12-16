@@ -1,12 +1,11 @@
 package com.ailhanli.basic_datastructures.stack.ex1;
 
-import com.ailhanli.basic_datastructures.stack.Stack;
-import com.ailhanli.basic_datastructures.stack.StackArrayImpl;
+import java.util.Stack;
 
 public class ParantesisSolution {
 
 	public boolean isBalanced(String word) {
-		Stack<String> stack = new StackArrayImpl<>();
+		Stack<String> stack = new Stack<>();
 
 		for (int i = 0; i < word.length(); i++) {
 			String newSymbol = "" + word.charAt(i);
