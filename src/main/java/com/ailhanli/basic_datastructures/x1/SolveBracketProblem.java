@@ -8,25 +8,31 @@ public class SolveBracketProblem {
 		Stack<String> stack = Stack.getInstance();
 
 		char[] chars = word.toCharArray();
-		
+
 		int i;
 		for (i = 0; i < chars.length; i++) {
-			
+
 			String x = chars[i] + "";
+
+			if(!x.equals("(") && !x.equals(")")
+				&& !x.equals("[") && !x.equals("]")
+				&& !x.equals("{") && !x.equals("}")){
+				continue;
+			}
 			
 			if (x.equals("(") || x.equals("[") || x.equals("{")) {
 				stack.push(x);
 				continue;
-			} 
-			
-			if (x.equals(")") || x.equals("]") || x.equals("}")) {
-				String old = stack.pop();
-				if(!old.equals("(") && !old.equals("[") && !old.equals("{")){
-					return String.valueOf(i+1);
-				}
+			}
+
+			String oldOne = stack.pop();
+			if (!(oldOne.equals("(") && x.equals(")")) && !(oldOne.equals("{") && x.equals("}"))
+					&& !(oldOne.equals("[") && x.equals("]"))) {
+				return String.valueOf(i + 1);
+
 			}
 		}
-		if(stack.empty()){
+		if (stack.empty()) {
 			return "0";
 		}
 		return String.valueOf(i);
