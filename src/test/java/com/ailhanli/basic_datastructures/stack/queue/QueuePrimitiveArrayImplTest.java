@@ -1,4 +1,4 @@
-package com.ailhanli.stack.queue;
+package com.ailhanli.basic_datastructures.stack.queue;
 
 import static org.junit.Assert.fail;
 

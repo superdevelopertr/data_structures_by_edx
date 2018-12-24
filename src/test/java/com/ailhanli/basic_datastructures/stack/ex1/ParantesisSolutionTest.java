@@ -1,4 +1,4 @@
-package com.ailhanli.stack.ex1;
+package com.ailhanli.basic_datastructures.stack.ex1;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

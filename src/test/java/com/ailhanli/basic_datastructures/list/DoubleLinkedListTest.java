@@ -1,4 +1,4 @@
-package com.ailhanli.list;
+package com.ailhanli.basic_datastructures.list;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
