@@ -57,4 +57,57 @@ public class TreeOperations {
 
 		return null;
 	}
+
+	public Tree<Integer> replace(Tree<Integer> tree, Integer number, Integer number2) {
+		if (number == number2) {
+			return tree;
+		} else {
+			Tree<Integer> first = findNode(tree, number);
+			Tree<Integer> second = findNode(tree, number2);
+
+			List<Tree<Integer>> firstChilds = first.getChilds();
+			List<Tree<Integer>> secondChilds = second.getChilds();
+
+			if (secondChilds != null) {
+				secondChilds.forEach(c -> c.setParent(first));
+			}
+			first.setChilds(secondChilds);
+			if (firstChilds != null) {
+				firstChilds.forEach(c -> c.setParent(second));
+			}
+			second.setChilds(firstChilds);
+
+			if (first == tree) {
+				second.setParent(null);
+			} else {
+				second.setParent(first.getParent());
+			}
+
+			if (second == tree) {
+				first.setParent(null);
+			} else {
+				first.setParent(second.getParent());
+			}
+
+			return second;
+
+		}
+	}
+
+	public Tree<Integer> findNode(Tree<Integer> tree, Integer number) {
+		Queue<Tree<Integer>> queue = new LinkedList<>();
+		queue.offer(tree);
+		while (!queue.isEmpty()) {
+			Tree<Integer> node = queue.poll();
+			if (node.getValue() == number) {
+				return node;
+			}
+			List<Tree<Integer>> childs = node.getChilds();
+			if (childs != null) {
+				childs.stream().forEach(queue::add);
+			}
+		}
+
+		return null;
+	}
 }
