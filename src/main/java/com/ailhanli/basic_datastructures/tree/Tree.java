@@ -42,4 +42,19 @@ public class Tree<T> {
 	public Tree<T> getParent() {
 		return parent;
 	}
+
+	public void remove(Tree<Integer> f) {
+		if(childs!=null){
+			for(int i=0;i<childs.size();i++){
+				if(childs.get(i).getValue()==f.getValue()){
+					childs.remove(i);
+					break;
+				}
+			}
+		}
+	}
+	
+	public boolean hasChilds(){
+		return childs!=null && childs.size()>0;
+	}
 }
